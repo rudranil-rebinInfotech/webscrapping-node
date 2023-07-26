@@ -16,14 +16,14 @@ app.use(express.json());
 
 const email=["rudranilbanerjee192@gmail.com","rudranil.banerjee@rebininfotech.com"];
 const linkPassword=["Rudranil@123","Rudranil@12345@1999"]
-const chromeOptions = new Options();
+// const chromeOptions = new Options();
 // chromeOptions.addArguments('--headless'); // Enable headless mode
 let i=0;
 app.post("/scrape", async (req, res) => {
   const { url } = req.body;
   const options = new chrome.Options();
-  // options.addArguments("--headless"); // Run Chrome in headless mode (without GUI)
-  chromeOptions.addArguments("--disable-extensions");
+  options.addArguments("--headless"); // Run Chrome in headless mode (without GUI)
+  // chromeOptions.addArguments("--disable-extensions");
 
   const driver = await new Builder()
     .forBrowser("chrome")
